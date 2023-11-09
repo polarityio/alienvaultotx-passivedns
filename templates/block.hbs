@@ -1,0 +1,65 @@
+<table class="passive-dns-table">
+  <thead>
+    <tr>
+      <th>
+        Status
+      <th>
+        Hostname
+      </th>
+      <th>
+        First Seen
+      </th>
+      <th>
+        Last Seen
+      </th>
+      <th>
+        Record Type
+      </th>
+      <th>
+        Suspicious
+      </th>
+      <th>
+        Link
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each passiveDNS as |dns|}}
+    <tr>
+      <td>
+        {{if dns.whitelisted}}
+        <span class="label label-success">
+          {{fa-icon icon="check" fixedWidth=true}}
+          Whitelisted
+          </span>
+        {{else}}
+        <span class="label label-danger">
+          {{fa-icon icon="times" fixedWidth=true}}
+          Blacklisted
+          </span>
+        {{/if}}
+      </td>
+      <td>
+        {{dns.hostname}}
+      </td>
+      <td>
+        {{dns.firstSeen}}
+      </td>
+      <td>
+        {{dns.lastSeen}}
+      </td>
+      <td>
+        {{dns.recordType}}
+      </td>
+      <td>
+        {{dns.suspicious}}
+      </td>
+      <td>
+        {{#if dns.link}}
+        <a href="{{dns.link}}" target="_blank">
+          {{fa-icon icon="external-link-alt" fixedWidth=true}}
+        </a>
+        {{/if}}
+      </td>
+  </tbody>
+</table>
