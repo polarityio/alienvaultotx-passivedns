@@ -2,9 +2,10 @@
   <thead>
     <tr>
       <th>
-        Status
-      <th>
         Hostname
+      </th>
+      <th>
+        Address
       </th>
       <th>
         First Seen
@@ -16,50 +17,60 @@
         Record Type
       </th>
       <th>
-        Suspicious
-      </th>
-      <th>
-        Link
+        ASN
       </th>
     </tr>
   </thead>
   <tbody>
-    {{#each passiveDNS as |dns|}}
-    <tr>
-      <td>
-        {{if dns.whitelisted}}
-        <span class="label label-success">
-          {{fa-icon icon="check" fixedWidth=true}}
-          Whitelisted
-          </span>
-        {{else}}
-        <span class="label label-danger">
-          {{fa-icon icon="times" fixedWidth=true}}
-          Blacklisted
-          </span>
-        {{/if}}
-      </td>
-      <td>
-        {{dns.hostname}}
-      </td>
-      <td>
-        {{dns.firstSeen}}
-      </td>
-      <td>
-        {{dns.lastSeen}}
-      </td>
-      <td>
-        {{dns.recordType}}
-      </td>
-      <td>
-        {{dns.suspicious}}
-      </td>
-      <td>
-        {{#if dns.link}}
-        <a href="{{dns.link}}" target="_blank">
-          {{fa-icon icon="external-link-alt" fixedWidth=true}}
-        </a>
-        {{/if}}
-      </td>
+    {{#each details.passive_dns as |dns|}}
+      <tr>
+        <td>
+          <a
+            class="p-link"
+            href="https://otx.alienvault.com/indicator/hostname/{{
+              dns.hostname
+            }}"
+          >
+            {{dns.hostname}}
+          </a>
+        </td>
+        <td>
+          <a
+            class="p-link"
+            href="https://otx.alienvault.com/indicator/ip/{{dns.address}}"
+          >
+            {{dns.address}}
+          </a>
+        </td>
+        <td>
+          {{dns.first}}
+        </td>
+        <td>
+          {{dns.last}}
+        </td>
+        <td>
+          {{dns.record_type}}
+        </td>
+        <td>
+          {{dns.asn}}
+        </td>
+        <td>
+          {{#if dns.link}}
+            <a href="https://otx.alienvault.com{{dns.link}}" target="_blank">
+              {{fa-icon icon="external-link" fixedWidth=true}}
+            </a>
+          {{/if}}
+        </td>
+      </tr>
+    {{/each}}
   </tbody>
 </table>
+<div class="text-center">
+  Showing {{details.passive_dns.length}} of {{details.count}} results.
+  <a
+    class="p-link"
+    href="https://otx.alienvault.com/indicator/hostname/{{entity.value}}"
+  >
+    View more.
+  </a>
+</div>

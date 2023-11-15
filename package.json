@@ -1,11 +1,12 @@
 {
   "name": "AlienvaultOTX-PassiveDNS",
-  "version": "3.0.0",
+  "version": "3.0.0-beta11",
   "main": "./integration.js",
   "private": true,
   "dependencies": {
     "async": "^3.2.5",
     "lodash": "^4.17.21",
+    "luxon": "^3.4.4",
     "polarity-integration-utils": "^0.1.0"
   }
 }

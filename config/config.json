@@ -3,7 +3,7 @@
   "acronym": "ADNS",
   "description": "Converts timestamps into any Time Zone",
   "defaultColor": "light-gray",
-  "entityTypes": [],
+  "entityTypes": ["IPv4", "IPv6", "domain"],
   "styles": ["./styles/styles.less"],
   "block": {
     "component": { "file": "./components/block.js" },
@@ -18,6 +18,24 @@
       "description": "Alienvault OTX",
       "default": "",
       "type": "text",
+      "userCanEdit": true,
+      "adminOnly": false
+    },
+    {
+      "key": "dataFormat",
+      "name": "Data Format",
+      "description": "Data Format for the first known and last seen timestamps. For more information, https://moment.github.io/luxon/#/formatting?id=table-of-tokens",
+      "default": "y-LL-dd TT",
+      "type": "text",
+      "userCanEdit": true,
+      "adminOnly": false
+    },
+    {
+      "key": "maxResults",
+      "name": "Max Results",
+      "description": "Max number of results to return",
+      "default": 25,
+      "type": "number",
       "userCanEdit": true,
       "adminOnly": false
     }
