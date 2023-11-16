@@ -3,7 +3,7 @@
   "acronym": "ADNS",
   "description": "Converts timestamps into any Time Zone",
   "defaultColor": "light-gray",
-  "entityTypes": ["IPv4", "IPv6", "domain"],
+  "entityTypes": ["domain"],
   "styles": ["./styles/styles.less"],
   "block": {
     "component": { "file": "./components/block.js" },
@@ -33,7 +33,7 @@
     {
       "key": "maxResults",
       "name": "Max Results",
-      "description": "Max number of results to return",
+      "description": "Max number of results to view",
       "default": 25,
       "type": "number",
       "userCanEdit": true,

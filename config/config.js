@@ -3,7 +3,7 @@ module.exports = {
   acronym: "ADNS",
   description: "Converts timestamps into any Time Zone",
   defaultColor: "light-gray",
-  entityTypes: ["IPv4", "IPv6", "domain"],
+  entityTypes: ["domain"],
   styles: ["./styles/styles.less"],
   block: {
     component: {

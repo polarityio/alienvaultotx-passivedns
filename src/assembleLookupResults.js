@@ -1,6 +1,6 @@
-const { trim, result } = require("lodash");
 const { map, get, minBy } = require("lodash/fp");
 const { DateTime } = require("luxon");
+
 const assembleLookupResults = (passiveDNS, options) =>
   map(({ entity, result }) => {
     // Remove extra results if maxResults is set
@@ -31,7 +31,7 @@ const assembleLookupResults = (passiveDNS, options) =>
     };
 
     return lookupResult;
-  }, passiveDNS);
+  })(passiveDNS);
 
 const timeToOptionsFormat = (time, options) => {
   const dataFormat = get("dataFormat", options);
@@ -40,7 +40,7 @@ const timeToOptionsFormat = (time, options) => {
 };
 
 const createSummaryTags = ({ count, passive_dns }, options) => {
-  const numberOfResults = count ? `Number of Results: ${count}` : [];
+  const numberOfResults = count ? `Total Results: ${count}` : [];
 
   const firstKnownRecord = minBy("first", passive_dns);
   const firstKnownDate = `First Known Record: ${firstKnownRecord.first}`;
