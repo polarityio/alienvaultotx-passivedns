@@ -1,4 +1,5 @@
 module.exports = {
+  polarityIntegrationUuid: "7e3673c0-855b-11ee-a3cb-2d9498bdef4f",
   name: "AlienvaultOTX - PassiveDNS",
   acronym: "ADNS",
   description: "Converts timestamps into any Time Zone",
