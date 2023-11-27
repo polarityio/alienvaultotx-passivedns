@@ -8,7 +8,7 @@ const {
   userOptions: { validateOptions }
 } = require('polarity-integration-utils');
 
-const searchEntities = require('./src/searchEntities');
+const getPassiveDNS = require('./src/queries/getPassiveDNS');
 const assembleLookupResults = require('./src/assembleLookupResults');
 
 const doLookup = async (entities, options, cb) => {
@@ -16,7 +16,7 @@ const doLookup = async (entities, options, cb) => {
   try {
     Logger.debug({ entities }, 'Entities');
 
-    const passiveDNS = await searchEntities(entities, options);
+    const passiveDNS = await getPassiveDNS(entities, options);
 
     Logger.trace({ passiveDNS }, 'Search Results');
 
