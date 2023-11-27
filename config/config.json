@@ -19,7 +19,7 @@
       "description": "Alienvault OTX",
       "default": "",
       "type": "password",
-      "userCanEdit": true,
+      "userCanEdit": false,
       "adminOnly": true
     },
     {
@@ -28,7 +28,7 @@
       "description": "Date Format to return",
       "default": "y-LL-dd TT",
       "type": "text",
-      "userCanEdit": true,
+      "userCanEdit": false,
       "adminOnly": true
     },
     {
@@ -37,7 +37,7 @@
       "description": "Max number of results to return",
       "default": 50,
       "type": "number",
-      "userCanEdit": true,
+      "userCanEdit": false,
       "adminOnly": true
     }
   ]
