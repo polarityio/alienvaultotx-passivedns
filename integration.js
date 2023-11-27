@@ -1,7 +1,6 @@
 'use strict';
-const { setLogger, getLogger } = require('./src/logging');
-
 const {
+  logging: { setLogger, getLogger },
   errors: { parseErrorToReadableJson }
 } = require('polarity-integration-utils');
 const {

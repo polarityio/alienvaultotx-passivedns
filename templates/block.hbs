@@ -24,17 +24,15 @@
   <tbody>
     {{#each details.passive_dns as |dns|}}
       <tr>
-        <td>
+        <td data-label="Hostname">
           <a
             class="p-link"
-            href="https://otx.alienvault.com/indicator/hostname/{{
-              dns.hostname
-            }}"
+            href="https://otx.alienvault.com/indicator/hostname/{{dns.hostname}}"
           >
             {{dns.hostname}}
           </a>
         </td>
-        <td>
+        <td data-label="Address">
           <a
             class="p-link"
             href="https://otx.alienvault.com/indicator/ip/{{dns.address}}"
@@ -42,24 +40,17 @@
             {{dns.address}}
           </a>
         </td>
-        <td>
+        <td data-label="First Seen">
           {{dns.first}}
         </td>
-        <td>
+        <td data-label="Last Seen">
           {{dns.last}}
         </td>
-        <td>
+        <td data-label="Record Type">
           {{dns.record_type}}
         </td>
-        <td>
+        <td data-label="ASN">
           {{dns.asn}}
-        </td>
-        <td>
-          {{#if dns.link}}
-            <a href="https://otx.alienvault.com{{dns.link}}" target="_blank">
-              {{fa-icon icon="external-link" fixedWidth=true}}
-            </a>
-          {{/if}}
         </td>
       </tr>
     {{/each}}
@@ -67,10 +58,7 @@
 </table>
 <div class="text-center">
   Showing {{details.passive_dns.length}} of {{details.count}} results.
-  <a
-    class="p-link"
-    href="https://otx.alienvault.com/indicator/hostname/{{entity.value}}"
-  >
+  <a class="p-link" href="https://otx.alienvault.com/indicator/hostname/{{entity.value}}">
     View more.
   </a>
 </div>
