@@ -1,10 +1,10 @@
-const { map, get, minBy } = require("lodash/fp");
-const { DateTime } = require("luxon");
+const { map, get, minBy } = require('lodash/fp');
+const { DateTime } = require('luxon');
 
 const assembleLookupResults = (passiveDNS, options) =>
   map(({ entity, result }) => {
     // Remove extra results if maxResults is set
-    const maxResults = get("maxResults", options);
+    const maxResults = get('maxResults', options);
 
     const trimmedResults =
       result.count > maxResults
@@ -17,7 +17,7 @@ const assembleLookupResults = (passiveDNS, options) =>
     result.passive_dns = map((record) => ({
       ...record,
       first: timeToOptionsFormat(record.first, options),
-      last: timeToOptionsFormat(record.last, options),
+      last: timeToOptionsFormat(record.last, options)
     }))(result.passive_dns);
 
     const lookupResult = {
@@ -25,16 +25,16 @@ const assembleLookupResults = (passiveDNS, options) =>
       data: result
         ? {
             summary: createSummaryTags(result, options),
-            details: result,
+            details: result
           }
-        : null,
+        : null
     };
 
     return lookupResult;
   })(passiveDNS);
 
 const timeToOptionsFormat = (time, options) => {
-  const dataFormat = get("dataFormat", options);
+  const dataFormat = get('dataFormat', options);
 
   return DateTime.fromISO(time).toFormat(dataFormat);
 };
@@ -42,13 +42,10 @@ const timeToOptionsFormat = (time, options) => {
 const createSummaryTags = ({ count, passive_dns }, options) => {
   const numberOfResults = count ? `Total Results: ${count}` : [];
 
-  const firstKnownRecord = minBy("first", passive_dns);
+  const firstKnownRecord = minBy('first', passive_dns);
   const firstKnownDate = `First Known Record: ${firstKnownRecord.first}`;
 
-  return []
-    .concat("AlienvaultOTX - PassiveDNS")
-    .concat(numberOfResults)
-    .concat(firstKnownDate);
+  return [].concat(numberOfResults).concat(firstKnownDate);
 };
 
 module.exports = assembleLookupResults;
