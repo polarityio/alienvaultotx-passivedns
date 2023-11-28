@@ -1,16 +1,16 @@
-const authenticateRequest = require("./authenticateRequest");
-const config = require("../../config/config");
+const authenticateRequest = require('./authenticateRequest');
+const config = require('../../config/config');
 
 const {
-  requests: { createRequestWithDefaults },
-} = require("polarity-integration-utils");
+  requests: { createRequestWithDefaults }
+} = require('polarity-integration-utils');
 
-const { parallelLimit } = require("async");
-const { map, get, getOr, filter, flow, negate, isEmpty } = require("lodash/fp");
+const { parallelLimit } = require('async');
+const { map, get, getOr, filter, flow, negate, isEmpty } = require('lodash/fp');
 
 const requestWithDefaults = createRequestWithDefaults({
   config,
-  preprocessRequestOptions: authenticateRequest,
+  preprocessRequestOptions: authenticateRequest
 });
 
 const createRequestsInParallel =
@@ -25,9 +25,7 @@ const createRequestsInParallel =
       ({ entity, ...requestOptions }) =>
         async () => {
           const response = await requestWithDefaults(requestOptions);
-          const result = responseGetPath
-            ? get(responseGetPath, response)
-            : response;
+          const result = responseGetPath ? get(responseGetPath, response) : response;
           return entity ? { entity, result } : result;
         },
       requestsOptions
@@ -37,7 +35,7 @@ const createRequestsInParallel =
 
     return onlyReturnPopulatedResults
       ? filter(
-          flow((result) => getOr(result, "result", result), negate(isEmpty)),
+          flow((result) => getOr(result, 'result', result), negate(isEmpty)),
           results
         )
       : results;
@@ -47,5 +45,5 @@ const requestsInParallel = createRequestsInParallel(requestWithDefaults);
 
 module.exports = {
   requestWithDefaults,
-  requestsInParallel,
+  requestsInParallel
 };
