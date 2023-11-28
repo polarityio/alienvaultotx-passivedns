@@ -1,34 +1,41 @@
 {
   "polarityIntegrationUuid": "7e3673c0-855b-11ee-a3cb-2d9498bdef4f",
-  "name": "AlienvaultOTX - PassiveDNS",
+  "name": "AlienVault OTX - PassiveDNS",
   "acronym": "ADNS",
-  "description": "Query Alienvault OTX using a domain name to get passive DNS information",
+  "description": "Search passive DNS information from AlienVault OTX",
   "defaultColor": "light-gray",
-  "entityTypes": ["domain"],
-  "styles": ["./styles/styles.less"],
+  "entityTypes": [
+    "domain"
+  ],
+  "styles": [
+    "./styles/styles.less"
+  ],
   "block": {
-    "component": { "file": "./components/block.js" },
-    "template": { "file": "./templates/block.hbs" }
+    "component": {
+      "file": "./components/block.js"
+    },
+    "template": {
+      "file": "./templates/block.hbs"
+    }
   },
-  "request": { "cert": "", "key": "", "passphrase": "", "ca": "", "proxy": "" },
-  "logging": { "level": "info" },
+  "request": {
+    "cert": "",
+    "key": "",
+    "passphrase": "",
+    "ca": "",
+    "proxy": ""
+  },
+  "logging": {
+    "level": "info"
+  },
   "options": [
     {
       "key": "apiKey",
-      "name": "Alienvault OTX API Key",
-      "description": "Alienvault OTX",
+      "name": "AlienVault OTX API Key",
+      "description": "A valid AlienVault OTX API key",
       "default": "",
       "type": "password",
-      "userCanEdit": false,
-      "adminOnly": true
-    },
-    {
-      "key": "dateFormat",
-      "name": "Date Format",
-      "description": "Date Format to return",
-      "default": "y-LL-dd TT",
-      "type": "text",
-      "userCanEdit": false,
+      "userCanEdit": true,
       "adminOnly": true
     },
     {
@@ -37,7 +44,7 @@
       "description": "Max number of results to return",
       "default": 50,
       "type": "number",
-      "userCanEdit": false,
+      "userCanEdit": true,
       "adminOnly": true
     }
   ]

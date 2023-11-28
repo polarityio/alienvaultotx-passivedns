@@ -1,8 +1,7 @@
 module.exports = {
-  polarityIntegrationUuid: '7e3673c0-855b-11ee-a3cb-2d9498bdef4f',
-  name: 'AlienvaultOTX - PassiveDNS',
+  name: 'AlienVault OTX - PassiveDNS',
   acronym: 'ADNS',
-  description: 'Query Alienvault OTX using a domain name to get passive DNS information',
+  description: 'Search passive DNS information from AlienVault OTX',
   defaultColor: 'light-gray',
   entityTypes: ['domain'],
   styles: ['./styles/styles.less'],
@@ -27,19 +26,10 @@ module.exports = {
   options: [
     {
       key: 'apiKey',
-      name: 'Alienvault OTX API Key',
-      description: 'Alienvault OTX',
+      name: 'AlienVault OTX API Key',
+      description: 'A valid AlienVault OTX API key',
       default: '',
       type: 'password',
-      userCanEdit: true,
-      adminOnly: true
-    },
-    {
-      key: 'dateFormat',
-      name: 'Date Format',
-      description: 'Date Format to return',
-      default: 'y-LL-dd TT',
-      type: 'text',
       userCanEdit: true,
       adminOnly: true
     },

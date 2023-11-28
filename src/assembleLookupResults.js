@@ -1,5 +1,4 @@
 const { map, get, minBy } = require('lodash/fp');
-const { DateTime } = require('luxon');
 
 const assembleLookupResults = (passiveDNS, options) =>
   map(({ entity, result }) => {
@@ -13,13 +12,6 @@ const assembleLookupResults = (passiveDNS, options) =>
 
     result.passive_dns = trimmedResults;
 
-    // Convert timestamps to options.dataFormat
-    result.passive_dns = map((record) => ({
-      ...record,
-      first: timeToOptionsFormat(record.first, options),
-      last: timeToOptionsFormat(record.last, options)
-    }))(result.passive_dns);
-
     const lookupResult = {
       entity,
       data: result
@@ -32,12 +24,6 @@ const assembleLookupResults = (passiveDNS, options) =>
 
     return lookupResult;
   })(passiveDNS);
-
-const timeToOptionsFormat = (time, options) => {
-  const dataFormat = get('dataFormat', options);
-
-  return DateTime.fromISO(time).toFormat(dataFormat);
-};
 
 const createSummaryTags = ({ count, passive_dns }, options) => {
   const numberOfResults = count ? `Total Results: ${count}` : [];
