@@ -3,9 +3,6 @@ const {
   logging: { setLogger, getLogger },
   errors: { parseErrorToReadableJson }
 } = require('polarity-integration-utils');
-const {
-  userOptions: { validateOptions }
-} = require('polarity-integration-utils');
 
 const getPassiveDNS = require('./src/queries/getPassiveDNS');
 const assembleLookupResults = require('./src/assembleLookupResults');
@@ -31,12 +28,23 @@ const doLookup = async (entities, options, cb) => {
   }
 };
 
-const onMessage = ({ action, data: actionParams }, options, callback) =>
-  onMessageFunctions[action](actionParams, options, callback);
+function validateOptions(userOptions, cb) {
+  let errors = [];
+  if (
+      typeof userOptions.apiKey.value !== 'string' ||
+      (typeof userOptions.apiKey.value === 'string' && userOptions.apiKey.value.length === 0)
+  ) {
+    errors.push({
+      key: 'apiKey',
+      message: 'You must provide an AlienVault OTX API key'
+    });
+  }
+
+  cb(null, errors);
+}
 
 module.exports = {
   startup: setLogger,
   validateOptions,
-  doLookup,
-  onMessage
+  doLookup
 };
