@@ -36,14 +36,18 @@ const assembleLookupResults = (passiveDNS, options) =>
   })(passiveDNS);
 
 const createSummaryTags = ({ count, passive_dns }, options) => {
-  const Logger = getLogger();
+  const tags = [];
+
   const numberOfResults = count ? `Total Results: ${count}` : [];
+  tags.push(numberOfResults);
 
   const firstKnownRecord = minBy('first', passive_dns);
-  Logger.info({ firstKnownRecord, numberOfResults }, 'First Known Record');
-  const firstKnownDate = `First Known Record: ${firstKnownRecord.first}`;
+  if (firstKnownRecord.first) {
+    const firstKnownDate = `First Known Record: ${firstKnownRecord.first.split('T')[0]}`;
+    tags.push(firstKnownDate);
+  }
 
-  return [].concat(numberOfResults).concat(firstKnownDate);
+  return tags;
 };
 
 module.exports = assembleLookupResults;
