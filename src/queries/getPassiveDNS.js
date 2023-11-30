@@ -1,14 +1,17 @@
 const { requestsInParallel } = require('../request');
 const { map } = require('lodash/fp');
 
-const ALIENVAULT_OTX_BASE_URL =
+const ALIENVAULT_OTX_DOMAIN_BASE_URL =
   'https://otx.alienvault.com/otxapi/indicators/domain/passive_dns/';
+
+const ALIENVAULT_OTX_IP_BASE_URL =
+    'https://otx.alienvault.com/otxapi/indicators/IPv4/passive_dns/';
 
 const getPassiveDNS = async (entities, options) => {
   const dnsRequests = map(
     (entity) => ({
       entity,
-      url: ALIENVAULT_OTX_BASE_URL + entity.value,
+      url: entity.isDomain ? ALIENVAULT_OTX_DOMAIN_BASE_URL + entity.value : ALIENVAULT_OTX_IP_BASE_URL + entity.value,
       method: 'GET',
       options
     }),

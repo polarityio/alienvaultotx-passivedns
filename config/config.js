@@ -3,7 +3,7 @@ module.exports = {
   acronym: 'ADNS',
   description: 'Search passive DNS information from AlienVault OTX',
   defaultColor: 'light-gray',
-  entityTypes: ['domain'],
+  entityTypes: ['domain', 'IPv4'],
   styles: ['./styles/styles.less'],
   block: {
     component: {

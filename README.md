@@ -1,6 +1,6 @@
 # Polarity AlienVault OTX Passive DNS Integration
 
-Returns passive DNS information from AlienVault OTX for a given domain.
+Returns passive DNS information from AlienVault OTX for a given domain or IPv4 address.
 
 ## Integration Options
 

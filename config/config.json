@@ -5,7 +5,8 @@
   "description": "Search passive DNS information from AlienVault OTX",
   "defaultColor": "light-gray",
   "entityTypes": [
-    "domain"
+    "domain",
+    "IPv4"
   ],
   "styles": [
     "./styles/styles.less"
