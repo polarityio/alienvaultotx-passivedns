@@ -7,7 +7,14 @@ const assembleLookupResults = (passiveDNS, options) =>
     // Remove extra results if maxResults is set
     const Logger = getLogger();
     const maxResults = get('maxResults', options);
-    Logger.info({ result, maxResults }, 'Result and Max Results');
+
+    if (result.count === 0) {
+      return {
+        entity,
+        data: null
+      };
+    }
+
     const trimmedResults =
       result.count > maxResults
         ? result.passive_dns.slice(0, maxResults)
