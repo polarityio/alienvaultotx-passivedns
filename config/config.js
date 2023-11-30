@@ -21,7 +21,7 @@ module.exports = {
     proxy: ''
   },
   logging: {
-    level: 'trace' //trace, debug, info, warn, error, fatal
+    level: 'info' //trace, debug, info, warn, error, fatal
   },
   options: [
     {
@@ -30,7 +30,7 @@ module.exports = {
       description: 'A valid AlienVault OTX API key',
       default: '',
       type: 'password',
-      userCanEdit: true,
+      userCanEdit: false,
       adminOnly: true
     },
     {
@@ -39,7 +39,7 @@ module.exports = {
       description: 'Max number of results to return',
       default: 50,
       type: 'number',
-      userCanEdit: true,
+      userCanEdit: false,
       adminOnly: true
     }
   ]

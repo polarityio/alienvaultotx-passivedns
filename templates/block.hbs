@@ -1,64 +1,64 @@
-<table class="passive-dns-table">
-  <thead>
-    <tr>
-      <th>
-        Hostname
-      </th>
-      <th>
-        Address
-      </th>
-      <th>
-        First Seen
-      </th>
-      <th>
-        Last Seen
-      </th>
-      <th>
-        Record Type
-      </th>
-      <th>
-        ASN
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each details.passive_dns as |dns|}}
-      <tr>
-        <td data-label="Hostname">
-          <a
-            class="p-link"
-            href="https://otx.alienvault.com/indicator/hostname/{{dns.hostname}}"
-          >
-            {{dns.hostname}}
-          </a>
-        </td>
-        <td data-label="Address">
-          <a
-            class="p-link"
-            href="https://otx.alienvault.com/indicator/ip/{{dns.address}}"
-          >
-            {{dns.address}}
-          </a>
-        </td>
-        <td data-label="First Seen">
-          {{dns.first}}
-        </td>
-        <td data-label="Last Seen">
-          {{dns.last}}
-        </td>
-        <td data-label="Record Type">
-          {{dns.record_type}}
-        </td>
-        <td data-label="ASN">
-          {{dns.asn}}
-        </td>
-      </tr>
-    {{/each}}
-  </tbody>
-</table>
-<div class="text-center">
-  Showing {{details.passive_dns.length}} of {{details.count}} results.
-  <a class="p-link" href="https://otx.alienvault.com/indicator/hostname/{{entity.value}}">
-    View more.
-  </a>
+<div class="p-footnote mb-1">
+  Showing first {{numEntriesToShow}} of {{details.count}} results
 </div>
+
+{{#each (take numEntriesToShow details.passive_dns) as | entry index |}}
+  <div class="dns-entry">
+    <div>
+      <span class="p-key">Hostname: </span>
+      <span class="p-value">
+        <a href="https://otx.alienvault.com/{{entry.indicator_link}}">
+          {{entry.hostname}}
+          {{fa-icon icon="external-link-square" fixedWidth=false class="external-link-icon"}}
+        </a>
+      </span>
+    </div>
+    <div>
+      <span class="p-key">Address: </span>
+      <span class="p-value">{{entry.address}}</span>
+    </div>
+    <div>
+      <span class="p-key">First Seen: </span>
+      <span class="p-value">{{moment-format entry.first "MM/DD/YYYY HH:mm" timeZone=timezone}}</span>
+    </div>
+    <div>
+      <span class="p-key">Last Seen: </span>
+      <span class="p-value">{{moment-format entry.last "MM/DD/YYYY HH:mm" timeZone=timezone}}</span>
+    </div>
+    <div>
+      <span class="p-key">Status: </span>
+      <span class="p-value">
+        {{#if entry.whitelisted}}
+          Whitelisted
+        {{else}}
+          Unknown
+        {{/if}}
+      </span>
+    </div>
+    <div>
+      <span class="p-key">Query Type: </span>
+      <span class="p-value">{{entry.record_type}}</span>
+    </div>
+    {{#if entry.asn}}
+      <div>
+        <span class="p-key">ASN: </span>
+        <span class="p-value">{{entry.asn}}</span>
+      </div>
+    {{/if}}
+    {{#if entry.flag_title}}
+      <div>
+        <span class="p-key">Country: </span>
+        <span class="p-value">{{entry.flag_title}}</span>
+      </div>
+    {{/if}}
+  </div>
+{{/each}}
+
+{{#if (eq numEntriesToShow details.passive_dns.length)}}
+  <span class="p-action" {{action "showLess"}}>View less entries {{fa-icon icon="chevron-up" fixedWidth=true}}</span>
+  <div class="p-footnote mt-1">
+    Showing first {{numEntriesToShow}} of {{details.count}} results
+  </div>
+{{else}}
+  <span class="p-action" {{action "showAll"}}>View more entries {{fa-icon icon="chevron-down" fixedWidth=true}}</span>
+{{/if}}

@@ -35,7 +35,7 @@
       "description": "A valid AlienVault OTX API key",
       "default": "",
       "type": "password",
-      "userCanEdit": true,
+      "userCanEdit": false,
       "adminOnly": true
     },
     {
@@ -44,7 +44,7 @@
       "description": "Max number of results to return",
       "default": 50,
       "type": "number",
-      "userCanEdit": true,
+      "userCanEdit": false,
       "adminOnly": true
     }
   ]
