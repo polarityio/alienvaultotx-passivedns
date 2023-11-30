@@ -2,6 +2,10 @@
 
 Returns passive DNS information from AlienVault OTX for a given domain or IPv4 address.
 
+| ![image](images/overlay-ip.png) | ![](images/overlay-domain.png) 
+|---------------------------------|--------------------------------|
+| *IP Example*                    | *Domain Example*               |
+
 ## Integration Options
 
 ### AlienVault OTX API Key
