@@ -73,11 +73,13 @@
 {{/each}}
 </div>
 
-{{#if (eq numEntriesToShow details.passive_dns.length)}}
-  <span class="p-action" {{action "showLess"}}>View less entries {{fa-icon icon="chevron-up" fixedWidth=true}}</span>
-  <div class="p-footnote mt-1">
-    Showing first {{numEntriesToShow}} of {{details.count}} results
-  </div>
-{{else}}
-  <span class="p-action" {{action "showAll"}}>View more entries {{fa-icon icon="chevron-down" fixedWidth=true}}</span>
-{{/if}}
+<div class="mt-1">
+  {{#if (eq numEntriesToShow details.passive_dns.length)}}
+    <span class="p-action" {{action "showLess"}}>View less entries {{fa-icon icon="chevron-up" fixedWidth=true}}</span>
+    <div class="p-footnote mt-1">
+      Showing first {{numEntriesToShow}} of {{details.count}} results
+    </div>
+  {{else}}
+    <span class="p-action" {{action "showAll"}}>View more entries {{fa-icon icon="chevron-down" fixedWidth=true}}</span>
+  {{/if}}
+</div>

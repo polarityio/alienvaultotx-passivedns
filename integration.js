@@ -12,6 +12,7 @@ const doLookup = async (entities, options, cb) => {
   try {
     Logger.debug({ entities }, 'Entities');
 
+    entities = entities.filter(isValidEntity);
     const passiveDNS = await getPassiveDNS(entities, options);
 
     Logger.trace({ passiveDNS }, 'Search Results');
@@ -28,11 +29,40 @@ const doLookup = async (entities, options, cb) => {
   }
 };
 
+const isLoopBackIp = (entity) => {
+  return entity.startsWith('127');
+};
+
+const isLinkLocalAddress = (entity) => {
+  return entity.startsWith('169');
+};
+
+const isPrivateIP = (entity) => {
+  return entity.isPrivateIP === true;
+};
+
+/**
+ * Filter out private IPs
+ * @param entity
+ * @returns {boolean} true if the entity is valid (domain or public IP), false otherwise
+ */
+const isValidEntity = (entity) => {
+  if (entity.isIP) {
+    return !(
+      isLoopBackIp(entity.value) ||
+      isLinkLocalAddress(entity.value) ||
+      isPrivateIP(entity)
+    );
+  }
+  return true;
+};
+
 function validateOptions(userOptions, cb) {
   let errors = [];
   if (
-      typeof userOptions.apiKey.value !== 'string' ||
-      (typeof userOptions.apiKey.value === 'string' && userOptions.apiKey.value.length === 0)
+    typeof userOptions.apiKey.value !== 'string' ||
+    (typeof userOptions.apiKey.value === 'string' &&
+      userOptions.apiKey.value.length === 0)
   ) {
     errors.push({
       key: 'apiKey',
