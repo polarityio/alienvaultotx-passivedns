@@ -8,6 +8,13 @@ const assembleLookupResults = (passiveDNS, options) =>
     const Logger = getLogger();
     const maxResults = get('maxResults', options);
 
+    if (!result) {
+      return {
+        entity,
+        data: null
+      };
+    }
+
     if (result.count === 0) {
       return {
         entity,
