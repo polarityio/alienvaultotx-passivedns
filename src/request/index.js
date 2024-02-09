@@ -1,9 +1,6 @@
 const authenticateRequest = require('./authenticateRequest');
 const config = require('../../config/config');
 const {
-  logging: { getLogger }
-} = require('polarity-integration-utils');
-const {
   requests: { createRequestWithDefaults }
 } = require('polarity-integration-utils');
 
