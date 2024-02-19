@@ -1,14 +1,11 @@
 const { map, get, minBy } = require('lodash/fp');
-const {
-  logging: { getLogger }
-} = require('polarity-integration-utils');
+
 const assembleLookupResults = (passiveDNS, options) =>
   map(({ entity, result }) => {
     // Remove extra results if maxResults is set
-    const Logger = getLogger();
     const maxResults = get('maxResults', options);
 
-    if (result.count === 0) {
+    if (!result || result.count === 0) {
       return {
         entity,
         data: null

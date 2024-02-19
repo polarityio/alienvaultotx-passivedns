@@ -5,7 +5,8 @@ const authenticateRequest = async (requestOptions) => ({
   headers: {
     ...get('headers', requestOptions),
     Authorization: `${requestOptions.options.apiKey}`
-  }
+  },
+  json: true
 });
 
 module.exports = authenticateRequest;

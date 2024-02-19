@@ -1,6 +1,5 @@
 const authenticateRequest = require('./authenticateRequest');
 const config = require('../../config/config');
-
 const {
   requests: { createRequestWithDefaults }
 } = require('polarity-integration-utils');
@@ -10,7 +9,15 @@ const { map, get, getOr, filter, flow, negate, isEmpty } = require('lodash/fp');
 
 const requestWithDefaults = createRequestWithDefaults({
   config,
-  preprocessRequestOptions: authenticateRequest
+  preprocessRequestOptions: authenticateRequest,
+  postprocessRequestFailure: async (error, requestOptions) => {
+    // Ignore invalid domain errors which can occur via Web Search due to the parser
+    // allowing through invalid TLDs.
+    if (error.status === 400 && error.description.includes('Invalid domain')) {
+      return;
+    }
+    throw error;
+  }
 });
 
 const createRequestsInParallel =
