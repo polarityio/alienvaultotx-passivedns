@@ -16,7 +16,7 @@ const requestWithDefaults = createRequestWithDefaults({
     if (error.status === 400 && error.description.includes('Invalid domain')) {
       return;
     }
-    throw Error;
+    throw error;
   }
 });
 
