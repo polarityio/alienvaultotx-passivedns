@@ -5,6 +5,7 @@ module.exports = {
   defaultColor: 'light-gray',
   entityTypes: ['domain', 'IPv4'],
   styles: ['./styles/styles.less'],
+  onDemandOnly: true,
   block: {
     component: {
       file: './components/block.js'
@@ -23,15 +24,5 @@ module.exports = {
   logging: {
     level: 'info' //trace, debug, info, warn, error, fatal
   },
-  options: [
-    {
-      key: 'apiKey',
-      name: 'AlienVault OTX API Key',
-      description: 'A valid AlienVault OTX API key',
-      default: '',
-      type: 'password',
-      userCanEdit: false,
-      adminOnly: true
-    }
-  ]
+  options: []
 };

@@ -1,6 +1,9 @@
 const { map, get, minBy } = require('lodash/fp');
+const {
+  logging: { getLogger }
+} = require('polarity-integration-utils');
 
-const assembleLookupResults = (passiveDNS, options) =>
+const assembleLookupResults = (passiveDNS) =>
   map(({ entity, result }) => {
     if (!result || result.count === 0) {
       return {
@@ -13,7 +16,7 @@ const assembleLookupResults = (passiveDNS, options) =>
       entity,
       data: result
         ? {
-            summary: createSummaryTags(result, options),
+            summary: createSummaryTags(result),
             details: result
           }
         : null
@@ -22,7 +25,7 @@ const assembleLookupResults = (passiveDNS, options) =>
     return lookupResult;
   })(passiveDNS);
 
-const createSummaryTags = ({ count, passive_dns }, options) => {
+const createSummaryTags = ({ count, passive_dns }) => {
   const tags = [];
 
   const numberOfResults = count ? `Total Results: ${count}` : [];

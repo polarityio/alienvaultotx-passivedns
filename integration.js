@@ -17,7 +17,7 @@ const doLookup = async (entities, options, cb) => {
 
     Logger.trace({ passiveDNS }, 'Search Results');
 
-    const lookupResults = assembleLookupResults(passiveDNS, options);
+    const lookupResults = assembleLookupResults(passiveDNS);
 
     Logger.trace({ lookupResults }, 'Lookup Results');
     cb(null, lookupResults);
@@ -62,24 +62,7 @@ const isValidEntity = (entity) => {
   return true;
 };
 
-function validateOptions(userOptions, cb) {
-  let errors = [];
-  if (
-    typeof userOptions.apiKey.value !== 'string' ||
-    (typeof userOptions.apiKey.value === 'string' &&
-      userOptions.apiKey.value.length === 0)
-  ) {
-    errors.push({
-      key: 'apiKey',
-      message: 'You must provide an AlienVault OTX API key'
-    });
-  }
-
-  cb(null, errors);
-}
-
 module.exports = {
   startup: setLogger,
-  validateOptions,
   doLookup
 };
