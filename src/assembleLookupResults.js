@@ -2,22 +2,12 @@ const { map, get, minBy } = require('lodash/fp');
 
 const assembleLookupResults = (passiveDNS, options) =>
   map(({ entity, result }) => {
-    // Remove extra results if maxResults is set
-    const maxResults = get('maxResults', options);
-
     if (!result || result.count === 0) {
       return {
         entity,
         data: null
       };
     }
-
-    const trimmedResults =
-      result.count > maxResults
-        ? result.passive_dns.slice(0, maxResults)
-        : result.passive_dns;
-
-    result.passive_dns = trimmedResults;
 
     const lookupResult = {
       entity,

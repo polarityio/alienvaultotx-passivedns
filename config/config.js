@@ -32,15 +32,6 @@ module.exports = {
       type: 'password',
       userCanEdit: false,
       adminOnly: true
-    },
-    {
-      key: 'maxResults',
-      name: 'Max Results',
-      description: 'Max number of results to return',
-      default: 50,
-      type: 'number',
-      userCanEdit: false,
-      adminOnly: true
     }
   ]
 };
