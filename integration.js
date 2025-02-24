@@ -30,11 +30,15 @@ const doLookup = async (entities, options, cb) => {
 };
 
 const isLoopBackIp = (entity) => {
-  return entity.startsWith('127');
+  return entity.value.startsWith('127');
+};
+
+const isSourceAddressOnly = (entity) => {
+  return entity.value.startsWith('0.');
 };
 
 const isLinkLocalAddress = (entity) => {
-  return entity.startsWith('169');
+  return entity.value.startsWith('169');
 };
 
 const isPrivateIP = (entity) => {
@@ -49,9 +53,10 @@ const isPrivateIP = (entity) => {
 const isValidEntity = (entity) => {
   if (entity.isIP) {
     return !(
-      isLoopBackIp(entity.value) ||
-      isLinkLocalAddress(entity.value) ||
-      isPrivateIP(entity)
+      isLoopBackIp(entity) ||
+      isLinkLocalAddress(entity) ||
+      isPrivateIP(entity) ||
+      isSourceAddressOnly(entity)
     );
   }
   return true;
