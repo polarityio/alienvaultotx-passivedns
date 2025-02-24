@@ -17,7 +17,7 @@ const doLookup = async (entities, options, cb) => {
 
     Logger.trace({ passiveDNS }, 'Search Results');
 
-    const lookupResults = assembleLookupResults(passiveDNS, options);
+    const lookupResults = assembleLookupResults(passiveDNS);
 
     Logger.trace({ lookupResults }, 'Lookup Results');
     cb(null, lookupResults);
@@ -30,11 +30,15 @@ const doLookup = async (entities, options, cb) => {
 };
 
 const isLoopBackIp = (entity) => {
-  return entity.startsWith('127');
+  return entity.value.startsWith('127');
+};
+
+const isSourceAddressOnly = (entity) => {
+  return entity.value.startsWith('0.');
 };
 
 const isLinkLocalAddress = (entity) => {
-  return entity.startsWith('169');
+  return entity.value.startsWith('169');
 };
 
 const isPrivateIP = (entity) => {
@@ -49,32 +53,16 @@ const isPrivateIP = (entity) => {
 const isValidEntity = (entity) => {
   if (entity.isIP) {
     return !(
-      isLoopBackIp(entity.value) ||
-      isLinkLocalAddress(entity.value) ||
-      isPrivateIP(entity)
+      isLoopBackIp(entity) ||
+      isLinkLocalAddress(entity) ||
+      isPrivateIP(entity) ||
+      isSourceAddressOnly(entity)
     );
   }
   return true;
 };
 
-function validateOptions(userOptions, cb) {
-  let errors = [];
-  if (
-    typeof userOptions.apiKey.value !== 'string' ||
-    (typeof userOptions.apiKey.value === 'string' &&
-      userOptions.apiKey.value.length === 0)
-  ) {
-    errors.push({
-      key: 'apiKey',
-      message: 'You must provide an AlienVault OTX API key'
-    });
-  }
-
-  cb(null, errors);
-}
-
 module.exports = {
   startup: setLogger,
-  validateOptions,
   doLookup
 };
