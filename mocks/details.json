@@ -1,0 +1,192 @@
+{
+  "count": 12,
+  "passive_dns": [
+    {
+      "hostname": "mail.suspicious-domain.com",
+      "address": "198.51.100.45",
+      "first": "2024-01-15T08:23:45",
+      "last": "2024-03-20T14:56:12",
+      "record_type": "A",
+      "indicator_link": "/indicator/hostname/mail.suspicious-domain.com",
+      "flag_url": "assets/images/flags/us.png",
+      "flag_title": "United States",
+      "asset_type": "hostname",
+      "asn": "AS15169 google llc",
+      "suspicious": true,
+      "whitelisted": false
+    },
+    {
+      "hostname": "cdn.suspicious-domain.com",
+      "address": "203.0.113.88",
+      "first": "2024-02-10T11:45:30",
+      "last": "2024-03-22T09:12:45",
+      "record_type": "CNAME",
+      "indicator_link": "/indicator/hostname/cdn.suspicious-domain.com",
+      "flag_url": "assets/images/flags/cn.png",
+      "flag_title": "China",
+      "asset_type": "hostname",
+      "asn": "AS4134 chinanet backbone",
+      "suspicious": true,
+      "whitelisted": false
+    },
+    {
+      "hostname": "phishing-site.org",
+      "address": "198.51.100.22",
+      "first": "2024-01-05T06:15:20",
+      "last": "2024-03-25T18:30:55",
+      "record_type": "A",
+      "indicator_link": "/indicator/hostname/phishing-site.org",
+      "flag_url": "assets/images/flags/ru.png",
+      "flag_title": "Russia",
+      "asset_type": "hostname",
+      "asn": "AS12389 rostelecom",
+      "suspicious": true,
+      "whitelisted": false
+    },
+    {
+      "hostname": "www.google.com",
+      "address": "142.250.99.100",
+      "first": "2023-11-20T14:22:10",
+      "last": "2024-03-26T10:45:30",
+      "record_type": "A",
+      "indicator_link": "/indicator/hostname/www.google.com",
+      "flag_url": "assets/images/flags/us.png",
+      "flag_title": "United States",
+      "asset_type": "hostname",
+      "asn": "AS15169 google llc",
+      "suspicious": false,
+      "whitelisted_message": [
+        {
+          "source": "alexa",
+          "message": "Alexa rank: #1",
+          "name": "Listed on Alexa"
+        },
+        {
+          "source": "whitelist",
+          "message": "Whitelisted domain google.com",
+          "name": "Whitelisted domain"
+        }
+      ],
+      "whitelisted": true
+    },
+    {
+      "hostname": "c2-server.xyz",
+      "address": "198.51.100.150",
+      "first": "2024-03-01T20:10:45",
+      "last": "2024-03-27T12:20:15",
+      "record_type": "A",
+      "indicator_link": "/indicator/hostname/c2-server.xyz",
+      "flag_url": "assets/images/flags/nl.png",
+      "flag_title": "Netherlands",
+      "asset_type": "hostname",
+      "asn": "AS9009 m247 europe",
+      "suspicious": true,
+      "whitelisted": false
+    },
+    {
+      "hostname": "exfil.malicious.net",
+      "address": "203.0.113.200",
+      "first": "2024-02-28T09:30:20",
+      "last": "2024-03-28T08:15:40",
+      "record_type": "A",
+      "indicator_link": "/indicator/hostname/exfil.malicious.net",
+      "flag_url": "assets/images/flags/br.png",
+      "flag_title": "Brazil",
+      "asset_type": "hostname",
+      "asn": "AS26615 timbrasil s.a.",
+      "suspicious": true,
+      "whitelisted": false
+    },
+    {
+      "hostname": "mail.microsoft.com",
+      "address": "192.0.2.50",
+      "first": "2023-12-10T13:45:55",
+      "last": "2024-03-28T16:42:30",
+      "record_type": "CNAME",
+      "indicator_link": "/indicator/hostname/mail.microsoft.com",
+      "flag_url": "assets/images/flags/us.png",
+      "flag_title": "United States",
+      "asset_type": "hostname",
+      "asn": "AS8075 microsoft corporation",
+      "suspicious": false,
+      "whitelisted_message": [
+        {
+          "source": "whitelist",
+          "message": "Whitelisted domain microsoft.com",
+          "name": "Whitelisted domain"
+        }
+      ],
+      "whitelisted": true
+    },
+    {
+      "hostname": "ipv6.google.com",
+      "address": "2607:f8b0:4005:805::200e",
+      "first": "2024-01-20T07:10:15",
+      "last": "2024-03-29T11:25:50",
+      "record_type": "AAAA",
+      "indicator_link": "/indicator/hostname/ipv6.google.com",
+      "flag_url": "assets/images/flags/us.png",
+      "flag_title": "United States",
+      "asset_type": "hostname",
+      "asn": "AS15169 google llc",
+      "suspicious": false,
+      "whitelisted": true
+    },
+    {
+      "hostname": "75.100.51.198.in-addr.arpa",
+      "address": "198.51.100.75",
+      "first": "2024-03-05T15:20:40",
+      "last": "2024-03-29T14:55:20",
+      "record_type": "PTR",
+      "indicator_link": "/indicator/hostname/75.100.51.198.in-addr.arpa",
+      "flag_url": "assets/images/flags/us.png",
+      "flag_title": "United States",
+      "asset_type": "hostname",
+      "asn": "AS577 bell canada",
+      "suspicious": false,
+      "whitelisted": false
+    },
+    {
+      "hostname": "bot-32467.malware.info",
+      "address": "203.0.113.33",
+      "first": "2024-03-10T18:40:25",
+      "last": "2024-03-30T09:10:35",
+      "record_type": "A",
+      "indicator_link": "/indicator/hostname/bot-32467.malware.info",
+      "flag_url": "assets/images/flags/ua.png",
+      "flag_title": "Ukraine",
+      "asset_type": "hostname",
+      "asn": "AS15895 kyivstar",
+      "suspicious": true,
+      "whitelisted": false
+    },
+    {
+      "hostname": "payment-gate.darkweb.cc",
+      "address": "192.0.2.175",
+      "first": "2024-03-12T22:15:10",
+      "last": "2024-03-30T17:30:45",
+      "record_type": "A",
+      "indicator_link": "/indicator/hostname/payment-gate.darkweb.cc",
+      "flag_url": "assets/images/flags/ro.png",
+      "flag_title": "Romania",
+      "asset_type": "hostname",
+      "asn": "AS8708 rcs & rds",
+      "suspicious": true,
+      "whitelisted": false
+    },
+    {
+      "hostname": "download-update.tk",
+      "address": "198.51.100.99",
+      "first": "2024-03-18T10:05:30",
+      "last": "2024-03-31T13:45:20",
+      "record_type": "A",
+      "indicator_link": "/indicator/hostname/download-update.tk",
+      "flag_url": "assets/images/flags/in.png",
+      "flag_title": "India",
+      "asset_type": "hostname",
+      "asn": "AS9829 bsnl internet",
+      "suspicious": true,
+      "whitelisted": false
+    }
+  ]
+}

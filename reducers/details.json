@@ -1,0 +1,34 @@
+{
+  "root": {
+    "path": "",
+    "on_null": "return_empty"
+  },
+  "pipeline": [
+    {
+      "op": "copy",
+      "from": "count",
+      "to": "reduced_results.count"
+    },
+    {
+      "op": "copy",
+      "from": "passive_dns",
+      "to": "reduced_results.passive_dns"
+    },
+    {
+      "op": "drop",
+      "paths": [
+        "reduced_results.passive_dns[].indicator_link",
+        "reduced_results.passive_dns[].flag_url",
+        "reduced_results.passive_dns[].asset_type"
+      ]
+    },
+    {
+      "op": "prune",
+      "strategy": "empty_values",
+      "target": "reduced_results"
+    }
+  ],
+  "output": {
+    "result": "$working.reduced_results"
+  }
+}

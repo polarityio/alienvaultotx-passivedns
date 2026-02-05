@@ -30,5 +30,10 @@
   "logging": {
     "level": "info"
   },
-  "options": []
+  "options": [],
+  "reducer": {
+    "details": {
+      "file": "./reducers/details.json"
+    }
+  }
 }
